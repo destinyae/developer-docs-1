@@ -117,11 +117,11 @@ When we stake we exchange TAO for the alpha token in the pool. The following occ
 1. Prior to the staking operation, we know the expected price of the alpha token. This expected price is the reserve ratio, as described in [Rate](#rate-τ_inα_in), prior to the staking operation. 
 2. However, the very action of our staking changes the token reserve ratio, because we are adding TAO to the TAO reserves. 
 3. Mathematically the pool is required to maintain the constant product $k$. As a result, the pool algorithm automatically adjusts the alpha token reserves to keep the constant product $k$ unchanged. This results in a change in the reserve ratio.
-4. This means that the actual price at which our staking operation is executed is different from our original expected price of the alpha token. This difference between the original expected alpha token price and the actual actual token price at which staking operation is performed is called **slippage**.
+4. This means that the actual price at which our staking operation is executed is different from our original expected price of the alpha token. This difference between the originally expected alpha token price and the actual token price at which staking operation is performed is called **slippage**.
 
 ### Example
 
-As described in the [Staking](#staking) section, a staking event results in the staked TAO being added to the τ_in reserves of the subnet pool. The subnet pool algorithm calculates the number of units by which the $\alpha_{in}$ reserves should decrease. These units are then taken out of the $\alpha_{in}$ reserves and sent to the validator’s hotkey in the subnet. See an example below.
+As described in the [Staking](#staking) section, a staking event results in the staked TAO being added to the τ_in reserves of the subnet pool. The subnet pool algorithm calculates the number of units by which the $\alpha_{in}$ reserves should decrease. These units are then taken out of the $\alpha_{in}$ reserves and sent to the validator’s hotkey in the subnet. See the example below.
 
 The below example shows how staking 5 TAO works. 
 
@@ -362,7 +362,7 @@ For example, for a validator's hotkey in a given subnet:
 - Hence, this validator hotkey's local voting power, i.e., **local weight** = τ_in x hotkey's stake share = 5000 x 0.2 = 1000 TAO.
 
 :::tip Stake share → TAO-denominated voting power
-Hence, while the hotkey's stake share in this subnet is 20%, its actual local weight (local voting power) in the subnet is 1,000 TAO units. This is the power of dynamic TAO mechanism. It converts a hotkey's alpha stake share into an equivalent TAO-denominated voting power in the subnet. This makes alpha stakes comparable across different subnets, even though these subnets might have very different amounts of alpha tokens outstanding.
+Hence, while the hotkey's stake share in this subnet is 20%, its actual local weight (local voting power) in the subnet is 1,000 TAO units. This is the power of the dynamic TAO mechanism. It converts a hotkey's alpha stake share into an equivalent TAO-denominated voting power in the subnet. This makes alpha stakes comparable across different subnets, even though these subnets might have very different amounts of alpha tokens outstanding.
 :::
 
 ---
@@ -374,7 +374,7 @@ In any subnet, if you add up the local weights of all alpha holders, you will al
 This means:
 
 - The total voting power in a subnet is fixed by its TAO reserve ($$\tau_{in}$$).
-- For a given $$\tau_{in}$$, if a validator's hotkey in a subnet increases their local weight, it must come at the expense of others.
+- For a given $$\tau_{in}$$, if a validator's hotkey in a subnet increases its local weight, it must come at the expense of others.
 
 ---
 
@@ -500,10 +500,10 @@ We will use the example from [Global weight](#global-weight) section and extend 
   - TAO reserve is also the sum of all global weights in this storage subnet = 5,000 TAO
   - Local weight = (6,000/30,000) × 5,000 = 1,000 τ (also calculated in the above example)
 
-Hence, sum of all global weights in the all the above subnets is = (`root_weight` x subnet zero's total global weight) + sum of all global weights in gaming subnet + sum of all global weights in AI subnet + sum of all global weights in storage subnet
+Hence, sum of all global weights in all the above subnets is = (`root_weight` x subnet zero's total global weight) + sum of all global weights in gaming subnet + sum of all global weights in AI subnet + sum of all global weights in storage subnet
 
 = (0.5 x 10,000) + 10,000 + 15,000 + 5,000
-= 35,000 TAO. This is the global weights in all the subnets where this validator's hotkey is validating. 
+= 35,000 TAO. These are the global weights in all the subnets where this validator's hotkey is validating. 
 
 #### Validator stake weight for each subnet
 
@@ -583,7 +583,7 @@ Emissions into a subnet pool do change the constant product $k$ for that pool. O
 The below table shows how emissions are injected into the subnet pools. 
 
 :::caution Alpha price is always relative price
-Note that the terms relative price, alpha token's price, alpha price are the same as [Rate](#rate).
+Note that the terms relative price, alpha token's price, and alpha price are the same as [Rate](#rate).
 :::
 
 | <img style={{width: 500}} /> Every block, do this |<img style={{width: 500}} /> If (sum) $\geqslant$ 1 | <img style={{width: 400}} /> Else (If (sum) $\lt$ 1) |
@@ -595,7 +595,7 @@ Note that the terms relative price, alpha token's price, alpha price are the sam
 | **Emission into alpha_out** | Add one alpha token into the subnet alpha outstanding  | Add one alpha token into the subnet alpha outstanding |
 
 :::caution Proportional TAO emissions vs. Flat alpha emissions
-From the above table, we can see that while TAO emissions into the pool are proportional to each subnet's TAO reserve, the alpha emissions into the pool are flat 1 alpha per block. Furthermore, emissions into alpha outstanding are flat 1 alpha per block **regardless of sum of prices.**
+From the above table, we can see that while TAO emissions into the pool are proportional to each subnet's TAO reserve, the alpha emissions into the pool are flat 1 alpha per block. Furthermore, emissions into alpha outstanding are flat 1 alpha per block **regardless of the sum of prices.**
 :::
 
 See the below diagram showing how emissions flow:
@@ -765,8 +765,8 @@ The constant product $k$ is a critical concept to understand how the relative pr
 
 - No one directly owns the subnet pool reserves. These reserves exist to provide liquidity to the subnet pools.
 - However, as we saw in [Local weights vs TAO reserve](#local-weights-vs-tao-reserve) , a validator who holds X% of the $\alpha$ stake in a subnet is said to own the same X% of the TAO reserve pool of that subnet. 
-- In dynamic TAO the sum of α_in (also called alpha reserve) and α_out (all the alpha stake in the subnet) is treated as the the sum total of all alpha. **This is not not strictly true.** This sum total only represents the alpha associated with staking and unstaking. There is the another source of alpha, which is the emissions alpha. This emissions alpha is awarded to validators, subnet owners and miners. 
-- More important, these emissions alpha bypasses the subnet pool and gets into the subnet directly from the coinbase. Furthermore, the only way for this emissions alpha to come out of the subnet is via unstaking, even though they did not participate in staking. 
+- In dynamic TAO the sum of α_in (also called alpha reserve) and α_out (all the alpha stake in the subnet) is treated as the the sum total of all alpha. **This is not strictly true.** This sum total only represents the alpha associated with staking and unstaking. There is another source of alpha, which is the emissions alpha. This emissions alpha is awarded to validators, subnet owners and miners. 
+- More important, these emissions alpha bypasses the subnet pool and get into the subnet directly from the coinbase. Furthermore, the only way for this emissions alpha to come out of the subnet is via unstaking, even though they did not participate in staking. 
 
 ### Subnet zero
 
@@ -776,7 +776,7 @@ The constant product $k$ is a critical concept to understand how the relative pr
 
 When a validator’s stake is global it protects the Bittensor network much better. It does so by making it hard for a rogue validator (or for a cabal of rogue validators) to acquire 51% of the consensus voting power. Here is a simple example showing how it works: 
 
-Let's say we have 52 subnets and hypothetically a total 52,000 staked TAO tokens distributed amongst all the validators across these 52 subnets.
+Let's say we have 52 subnets and hypothetically a total of 52,000 staked TAO tokens distributed amongst all the validators across these 52 subnets.
 
 
 <center>
@@ -792,7 +792,7 @@ style={{width: 650}}
 
 <br />
 
-- When the stake is global, every validator’s stake is 100% global, hence every validator’s stake will appear in every subnet. A rogue validator would have to hold at least 51% of the total staked TAO, i.e., at least 26,500 TAO (51% of 52,000 TAO), to take control of the consensus power. This consensus power would appear in every subnet, giving the rogue validator a control over all the subnets. 
+- When the stake is global, every validator’s stake is 100% global, hence every validator’s stake will appear in every subnet. A rogue validator would have to hold at least 51% of the total staked TAO, i.e., at least 26,500 TAO (51% of 52,000 TAO), to take control of the consensus power. This consensus power would appear in every subnet, giving the rogue validator control over all the subnets. 
 
 - Let’s now make stake 100% local. This means that only the stake the validator has in a subnet is applicable for that subnet. This validator's stake in other subnets is not taken into account in this subnet. For simplicity, assume that all the validators’ stake is evenly spread among these 52 subnets. Then each subnet will have 1000 TAO tokens (52,000/52) as a combined stake of its validators. 
 
