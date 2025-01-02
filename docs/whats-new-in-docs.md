@@ -67,7 +67,7 @@ A [release note for the Bittensor SDK 8.3.1 hotfix](./bittensor-rel-notes.md#rel
 
 ## 17 October 2024
 
-- Published a new docs section [EVM Tutorials](./evm-tutorials/) with a basics doc and several tutorials on how to user EVM on subtensor.
+- Published a new docs section [EVM Tutorials](./evm-tutorials/) with a basics doc and several tutorials on how to use EVM on subtensor.
 
 ## 10 October 2024
 
@@ -202,7 +202,7 @@ A [release note for the Bittensor SDK 8.3.1 hotfix](./bittensor-rel-notes.md#rel
 
 ## 02 April 2024
 
-- Added [a diagram](./index.md) and description in the front page distinguishing the Bittensor platform from subnets and end-user applications. 
+- Added [a diagram](./index.md) and description on the front page distinguishing the Bittensor platform from subnets and end-user applications. 
 
 ## 22 March 2024
 
